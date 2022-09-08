@@ -12,16 +12,23 @@ function AddEditTransaction(
         getTransaction }) {
     const [loading, setLoading] = useState(false)
 
+
     const onFinish = async (values) => {
+
         try {
+
             const user = JSON.parse(localStorage.getItem('money-tracker-user'))
+            console.log(user);
+            console.log(values + 'values');
+            
+            
             setLoading(true)
             if (selectedItemForEdit) {
                 await axios.post('api/transaction/edit-transaction',
                     {
                         payload: {
                             ...values,
-                            userid: user._id,
+                            userid: user.userid,
                         },
                         transactionId: selectedItemForEdit._id,
                     });
@@ -29,7 +36,8 @@ function AddEditTransaction(
                 getTransaction()
                 message.success('Transaction updated successfully')
             } else {
-                await axios.post('api/transaction/add-transaction', { ...values, userid: user._id })
+                console.log(values);
+                await axios.post('api/transaction/add-transaction', { ...values, userid: user.userid })
                 getTransaction()
                 message.success('Transaction added successfully')
             }

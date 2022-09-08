@@ -10,12 +10,24 @@ import Spinner from '../components/Spinner'
 function Login() {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(true)
+    const [email, setEmail] = useState()
+    const [password, setPassword]= useState()
+
+    
 
     const onFinish = async (values) => {
+
+        const data = {
+            email,
+            password
+        }
+       
+
         try {
             setLoading(true)
-            const response = await axios.post('/api/users/login', values);
-            console.log(response.data)
+            console.log(data)
+            const response = await axios.post('/api/users/login', data);
+            console.log(response.data + "data response")
             localStorage.setItem('money-tracker-user', JSON.stringify({ ...response.data, password: '' }));
             console.log(localStorage.getItem('money-tracker-user'))
             setLoading(false)
@@ -42,10 +54,10 @@ function Login() {
                         <h1>Track Your Finances</h1>
 
                         <Form.Item label='Email' name='email'>
-                            <Input />
+                            <Input onChange = {(e) => {setEmail(e.target.value)}}/>
                         </Form.Item>
                         <Form.Item label='Password' name='password'>
-                            <Input type='password' />
+                            <Input type='password' onChange = {(e) => {setPassword(e.target.value)}}/>
                         </Form.Item>
                         <div className='d-flex justify-content-between align-items-center'>
                             <Link to='/register'>Not Registered Yet, Click Here to Register!</Link>

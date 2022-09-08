@@ -27,7 +27,7 @@ function Home() {
             setLoading(true)
             const response = await axios.post('/api/transaction/get-all-transactions',
                 {
-                    userid: user._id,
+                    userid: user.userid,
                     frequency,
                     ...(frequency === 'custom' && { selectedRange }),
                     type
