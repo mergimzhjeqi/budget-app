@@ -68,7 +68,7 @@ function Login() {
                 <div className='col-md-5'>
                     <div className='lottie'>
                         <lottie-player
-                            src="https://assets7.lottiefiles.com/packages/lf20_06a6pf9i.json"
+                            src="https://assets9.lottiefiles.com/packages/lf20_OdVhgq.json"
                             background="transparent"
                             speed="1"
                             loop autoplay>

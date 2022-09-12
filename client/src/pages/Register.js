@@ -16,6 +16,7 @@ function Register() {
             await axios.post('/api/users/register', values)
             message.success('Registration successfull')
             setLoading(false)
+            navigate('/home')
 
         } catch (error) {
             setLoading(false)
