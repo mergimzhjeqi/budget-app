@@ -105,10 +105,10 @@ function Home() {
     return (
         <DefaultLayout>
             {loading && <Spinner />}
-            <div className='filter d-flex justify-content-between align-items-center'>
-                <div className='d-flex'>
+            <div key ='1' className='filter d-flex justify-content-between align-items-center'>
+                <div key ='2' className='d-flex'>
 
-                    <div className='d-flex flex-column'>
+                    <div key ='3' className='d-flex flex-column'>
                         <h6>Search</h6>
                         <Select value={frequency} onChange={(value) => setFrequency(value)}>
                             <Select.Option value='7'>Last 1 Week</Select.Option>

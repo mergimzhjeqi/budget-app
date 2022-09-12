@@ -34,3 +34,25 @@ label, a{
     color: white;
     font-weight: 600;
 }
+
+.forgot-passord{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to right, #30cfd0 0%, #330867 100%);
+}
+
+.forgot-passord h1 {
+    font-size: 35px;
+    color: white;
+    font-weight: 600;
+}
+
+.forgot-passord input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.784);
+    color: rgba(255, 255, 255, 0.568) !important;
+
+}

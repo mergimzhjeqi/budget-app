@@ -25,11 +25,8 @@ function Login() {
 
         try {
             setLoading(true)
-            console.log(data)
             const response = await axios.post('/api/users/login', data);
-            console.log(response.data + "data response")
             localStorage.setItem('money-tracker-user', JSON.stringify({ ...response.data, password: '' }));
-            console.log(localStorage.getItem('money-tracker-user'))
             setLoading(false)
             message.success('Login successfull!')
             navigate('/')
@@ -59,7 +56,10 @@ function Login() {
                         <Form.Item label='Password' name='password'>
                             <Input type='password' onChange = {(e) => {setPassword(e.target.value)}}/>
                         </Form.Item>
-                        <div className='d-flex justify-content-between align-items-center'>
+                        <div className='text-end'>
+                            <Link to='/forgot-password'>Forgot Password?</Link>
+                        </div>
+                        <div className='d-flex justify-content-between align-items-center mt-2'>
                             <Link to='/register'>Not Registered Yet, Click Here to Register!</Link>
                             <button className='secondary' type='submit'>Login</button>
                         </div>

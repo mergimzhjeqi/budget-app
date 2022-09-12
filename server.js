@@ -1,7 +1,7 @@
 const express = require('express')
 const dbConnect = require('./dbConnect')
 const app = express()
-
+require('dotenv').config()
 app.use(express.json())
 
 

@@ -1,8 +1,9 @@
 const userService = require('../services/user.services')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
 const JWT_SECRET = 'jashdajskhdaksjhdaskjh'
+const JWT_FORGOT_PASSWORD = 'ajsdkhasdjhaskjdhasdjh'
+const emailService = require('../services/email.services')
 
 module.exports = {
     login:  async(params) => {
@@ -31,7 +32,19 @@ module.exports = {
                 email: user.email
             }
             
-    }
+    },
 
+
+    forgotPassword: async(params) =>{
+        const {email} = params
+        const user = await userService.findByEmail(email)
+
+        if(!user){
+            throw Error('This email does not exist!')
+        }
+
+        const token = jwt.sign({_id:user._id, exp:Math.floor(Date.now()/1000) +60*60*24}, JWT_FORGOT_PASSWORD)
+        return await emailService.sendForgotPAsswordEmail(email, token)
+    }
 
 }
